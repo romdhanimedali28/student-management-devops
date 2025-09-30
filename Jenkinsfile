@@ -1,11 +1,12 @@
 pipeline {
     agent any
+    
+    tools {
+        maven 'Maven-3.8' // Jenkins installera Maven automatiquement
+        jdk 'JDK-17'      // Jenkins utilisera le JDK configuré
+    }
    
     environment {
-        JAVA_HOME = '/usr/lib/jvm/java-17-openjdk-amd64'
-        MAVEN_HOME = '/usr/share/maven'
-        PATH = "${MAVEN_HOME}/bin:${JAVA_HOME}/bin:${env.PATH}"
-        
         // Configuration Docker
         DOCKERHUB_REPO = 'medaliromdhani/devops'
         DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials')
